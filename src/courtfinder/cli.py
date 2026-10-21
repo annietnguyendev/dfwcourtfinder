@@ -45,7 +45,19 @@ def run(bbox: BboxOpt = None, config: ConfigOpt = DEFAULT_CONFIG_PATH) -> None:
 @app.command()
 def osm(bbox: BboxOpt = None, config: ConfigOpt = DEFAULT_CONFIG_PATH) -> None:
     """Harvest OSM tennis/pickleball pitches to outputs/osm_courts.geojson."""
-    _pending("Phase 1")
+    from courtfinder import osm as osm_mod
+
+    cfg, box = _resolve(bbox, config)
+    try:
+        gdf = osm_mod.harvest(box, cfg)
+    except RuntimeError as e:
+        typer.echo(f"OSM harvest failed: {e} (cause: {e.__cause__!r})", err=True)
+        raise typer.Exit(code=1) from e
+    out = osm_mod.write_geojson(gdf, Path("outputs/osm_courts.geojson"))
+    counts = gdf.groupby(["sport", gdf.geom_type]).size() if len(gdf) else {}
+    typer.echo(f"bbox={box}  total={len(gdf)}  -> {out}")
+    for (sport, gtype), n in dict(counts).items():
+        typer.echo(f"  {sport:<10} {gtype:<10} {n}")
 
 
 @app.command()

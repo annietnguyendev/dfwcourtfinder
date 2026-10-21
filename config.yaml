@@ -1,4 +1,13 @@
 bbox: [-96.85, 33.0, -96.65, 33.12]
+osm:
+  overpass_urls:           # tried in order; rotates on failure
+    - https://overpass-api.de/api/interpreter
+    - https://overpass.kumi.systems/api/interpreter
+    - https://overpass.private.coffee/api/interpreter
+  query_timeout_s: 180
+  max_retries: 5
+  backoff_base_s: 2.0      # sleep = base * 2**attempt
+  backoff_max_s: 60.0
 naip:
   datetime: "2022/2026"
   prefer_latest: true
