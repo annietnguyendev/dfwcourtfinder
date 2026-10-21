@@ -1,4 +1,4 @@
-# courtlocator
+# dfwcourtfinder
 
 > The Python package and CLI in this repo are named **`courtfinder`**. The line-matching idea comes from [CourtFind](https://devpost.com/software/courtfind) ([nseniow/TennisCourtLocator](https://github.com/nseniow/TennisCourtLocator)), a 2021 hackathon project. No code was copied from it (see below).
 
