@@ -1,0 +1,40 @@
+bbox: [-96.85, 33.0, -96.65, 33.12]
+naip:
+  datetime: "2022/2026"
+  prefer_latest: true
+hires:
+  enabled: false
+  path: null               # local GeoTIFF/COG or URL
+  license_confirmed: false # must be true before any use
+  max_gsd_m: 0.15
+chips:
+  size_px: 512
+  overlap_px: 64
+  upsample: 2
+detect_cv:
+  hsv_ranges:              # court surface colors; tune per imagery year
+    green_blue: [[35, 40, 40], [130, 255, 220]]
+    red_clay:   [[0, 60, 60], [15, 255, 220]]
+  morph_kernel_px: 5
+  min_fill_ratio: 0.80     # contour area / minAreaRect area
+  exclude_ndvi_above: 0.3  # NAIP NIR band: drop grass/turf fields
+detect_yolo:
+  enabled: false
+  weights: yolo11s-obb.pt
+  imgsz: 1024
+  conf: 0.15
+  classes: [4, 5]
+lines:
+  canny: [50, 150]
+  hough_threshold: 40
+  min_line_len_m: 4.0
+  max_line_gap_m: 0.5
+  angle_tol_deg: 3
+  spacing_tol_m: 0.4
+classify:
+  tennis_long_m: [20, 40]
+  pickleball_long_m: [11, 21]
+  aspect_ratio: [1.6, 2.6]
+  pickleball_cluster_min: 4
+merge:
+  buffer_m: 10

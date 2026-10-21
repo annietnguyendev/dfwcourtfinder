@@ -1,0 +1,13 @@
+opencv-python-headless
+overpy
+pystac-client
+planetary-computer
+rasterio
+shapely
+geopandas
+pyproj
+numpy
+pillow
+typer
+pyyaml
+pytest

@@ -1,0 +1,21 @@
+# Data / intermediates
+chips/
+tiles/
+runs/
+reference/
+cache/
+.cache/
+*.tif
+!tests/fixtures/*.tif
+
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+build/
+dist/
+
+# Secrets
+.env
