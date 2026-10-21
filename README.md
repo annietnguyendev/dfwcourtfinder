@@ -1,4 +1,6 @@
-# court-finder
+# courtlocator
+
+> The Python package and CLI in this repo are named **`courtfinder`**. The line-matching idea comes from [CourtFind](https://devpost.com/software/courtfind) ([nseniow/TennisCourtLocator](https://github.com/nseniow/TennisCourtLocator)), a 2021 hackathon project. No code was copied from it (see below).
 
 CLI that outputs a GeoJSON of tennis and pickleball courts for a bounding box, using OpenStreetMap + USDA NAIP imagery.
 Full documentation lands in Phase 8; see `CLAUDE.md` for the build plan.
